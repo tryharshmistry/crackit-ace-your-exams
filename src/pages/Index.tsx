@@ -118,13 +118,13 @@ const Index = () => {
         <div className="container mx-auto max-w-6xl text-center">
           <div className="space-y-12 animate-fade-in">
             <div className="space-y-6">
-              <div className="inline-flex items-center gap-2 bg-primary/10 text-primary px-4 py-2 rounded-full text-sm font-semibold mb-4 animate-pulse">
+              <div className="inline-flex items-center gap-2 bg-primary/10 text-primary px-4 py-2 rounded-full text-sm font-semibold mb-4 hover:bg-primary/20 transition-colors">
                 <Star className="w-4 h-4" />
                 Trusted by 50,000+ Students
               </div>
               <h1 className="text-5xl sm:text-6xl lg:text-8xl font-extrabold leading-tight">
                 MASTER THE{" "}
-                <span className="bg-gradient-primary bg-clip-text text-transparent animate-pulse">
+                <span className="bg-gradient-primary bg-clip-text text-transparent">
                   APTITUDE
                 </span>
               </h1>
@@ -135,14 +135,14 @@ const Index = () => {
             </div>
             
             <div className="max-w-5xl mx-auto relative group">
-              <div className="absolute -inset-1 bg-gradient-primary rounded-3xl blur opacity-30 group-hover:opacity-60 transition duration-1000 group-hover:duration-200"></div>
+              <div className="absolute -inset-1 bg-gradient-primary rounded-3xl blur opacity-20 group-hover:opacity-40 transition duration-1000 group-hover:duration-200"></div>
               <div className="relative">
                 <img
                   src={heroImage}
                   alt="Students mastering aptitude with Crackit"
-                  className="rounded-3xl shadow-2xl w-full transform hover:scale-[1.02] transition-transform duration-700"
+                  className="rounded-3xl shadow-soft w-full transform hover:scale-[1.02] transition-transform duration-700"
                 />
-                <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 bg-white/95 backdrop-blur-xl text-primary px-8 py-3 rounded-full font-bold text-sm shadow-xl border border-primary/20">
+                <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 bg-white/95 backdrop-blur-xl text-primary px-8 py-3 rounded-full font-bold text-sm shadow-soft border border-primary/20">
                   <div className="flex items-center gap-2">
                     <GraduationCap className="w-4 h-4" />
                     DESIGNED BY IIT GRADUATES & ALUMNI
@@ -153,13 +153,13 @@ const Index = () => {
 
             <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
               <Link to="/register">
-                <Button variant="hero" size="xl" className="w-full sm:w-auto text-lg px-12 shadow-glow hover:shadow-accent hover:scale-110 transform transition-all duration-300 animate-pulse">
+                <Button variant="hero" size="xl" className="w-full sm:w-auto text-lg px-12 shadow-glow hover:shadow-accent hover:scale-105 transform transition-all duration-300">
                   <Zap className="w-5 h-5 mr-2" />
                   Start Free Practice
                 </Button>
               </Link>
               <Link to="/login">
-                <Button variant="outline" size="xl" className="w-full sm:w-auto text-lg px-12 border-2 hover:bg-primary/10 hover:border-primary hover:scale-105 transform transition-all duration-300">
+                <Button variant="outline" size="xl" className="w-full sm:w-auto text-lg px-12 border-2 hover:bg-primary/5 hover:border-primary hover:scale-105 transform transition-all duration-300">
                   Sign In
                 </Button>
               </Link>
@@ -183,16 +183,17 @@ const Index = () => {
       </section>
 
       {/* Completely Free Section */}
-      <section className="py-24 px-4 bg-gradient-to-r from-black via-gray-900 to-black text-white relative overflow-hidden">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(120,119,198,0.1),transparent_50%)]"></div>
+      <section className="py-24 px-4 bg-gradient-to-br from-primary-dark via-primary to-primary-glow text-white relative overflow-hidden">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(255,255,255,0.1),transparent_50%)] opacity-50"></div>
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_80%,rgba(255,255,255,0.1),transparent_50%)] opacity-30"></div>
         <div className="container mx-auto max-w-6xl text-center relative z-10">
           <div className="space-y-12">
             <div className="space-y-4">
-              <div className="inline-flex items-center gap-2 bg-accent/20 text-accent px-6 py-2 rounded-full text-sm font-semibold animate-pulse">
+              <div className="inline-flex items-center gap-2 bg-white/20 text-white px-6 py-2 rounded-full text-sm font-semibold backdrop-blur-sm">
                 <Award className="w-4 h-4" />
                 Limited Time: Everything Free
               </div>
-              <h2 className="text-6xl lg:text-7xl font-extrabold mb-6 bg-gradient-to-r from-white via-accent to-white bg-clip-text text-transparent">
+              <h2 className="text-6xl lg:text-7xl font-extrabold mb-6 text-white">
                 COMPLETELY FREE
               </h2>
               <p className="text-xl opacity-90 max-w-2xl mx-auto">
@@ -207,14 +208,14 @@ const Index = () => {
                 { number: "24/7", label: "AI Support", icon: Clock },
                 { number: "100%", label: "Free Forever", icon: Award },
               ].map((item, index) => (
-                <div key={index} className="group hover:scale-110 transition-all duration-300">
-                  <Card className="bg-white/5 border-white/10 text-white hover:bg-white/10 transition-all duration-300 backdrop-blur-xl">
+                <div key={index} className="group hover:scale-105 transition-all duration-300">
+                  <Card className="bg-white/10 border-white/20 text-white hover:bg-white/20 transition-all duration-300 backdrop-blur-xl shadow-soft">
                     <CardContent className="p-8 text-center space-y-4">
-                      <item.icon className="w-12 h-12 mx-auto text-accent group-hover:scale-110 transition-transform" />
-                      <div className="text-4xl font-bold bg-gradient-to-r from-accent to-white bg-clip-text text-transparent">
+                      <item.icon className="w-12 h-12 mx-auto text-accent-light group-hover:scale-110 transition-transform" />
+                      <div className="text-4xl font-bold text-white">
                         {item.number}
                       </div>
-                      <div className="text-sm opacity-80 font-medium">{item.label}</div>
+                      <div className="text-sm opacity-90 font-medium">{item.label}</div>
                     </CardContent>
                   </Card>
                 </div>
@@ -222,7 +223,7 @@ const Index = () => {
             </div>
             
             <Link to="/register">
-              <Button variant="accent" size="xl" className="text-lg px-16 shadow-glow hover:shadow-accent hover:scale-110 transform transition-all duration-300 animate-pulse">
+              <Button variant="accent" size="xl" className="text-lg px-16 shadow-accent hover:shadow-glow hover:scale-105 transform transition-all duration-300">
                 <Lightbulb className="w-5 h-5 mr-2" />
                 GET STARTED FOR FREE
               </Button>
@@ -246,12 +247,12 @@ const Index = () => {
           
           <div className="grid md:grid-cols-3 gap-8 mt-16">
             {features.map((feature, index) => (
-              <Card key={index} className="group text-center hover:shadow-2xl hover:shadow-primary/20 transition-all duration-500 bg-gradient-to-br from-white to-primary/5 border-2 hover:border-primary/30 hover:scale-105 transform">
+              <Card key={index} className="group text-center hover:shadow-glow hover:shadow-primary/10 transition-all duration-500 bg-gradient-card border border-primary/10 hover:border-primary/30 hover:scale-105 transform">
                 <CardHeader>
-                  <div className="mx-auto w-20 h-20 bg-gradient-primary rounded-2xl flex items-center justify-center text-white mb-6 shadow-glow group-hover:shadow-accent group-hover:scale-110 transition-all duration-300">
+                  <div className="mx-auto w-20 h-20 bg-gradient-primary rounded-2xl flex items-center justify-center text-white mb-6 shadow-soft group-hover:shadow-glow group-hover:scale-110 transition-all duration-300">
                     {feature.icon}
                   </div>
-                  <CardTitle className="text-xl font-bold group-hover:text-primary transition-colors">{feature.title}</CardTitle>
+                  <CardTitle className="text-xl font-bold text-foreground group-hover:text-primary transition-colors">{feature.title}</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <CardDescription className="text-base leading-relaxed text-muted-foreground group-hover:text-foreground transition-colors">
