@@ -97,84 +97,137 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-background">
       {/* Navigation */}
-      <nav className="border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+      <nav className="fixed top-0 w-full z-50 border-b bg-background/80 backdrop-blur-xl supports-[backdrop-filter]:bg-background/60 transition-all duration-300">
         <div className="container mx-auto px-4 h-16 flex items-center justify-between">
-          <Link to="/" className="text-2xl font-bold text-primary">
+          <Link to="/" className="text-2xl font-bold bg-gradient-primary bg-clip-text text-transparent hover:scale-105 transition-transform">
             Crackit
           </Link>
           <div className="flex items-center gap-4">
             <Link to="/login">
-              <Button variant="outline">Sign In</Button>
+              <Button variant="ghost" className="hover:bg-primary/10 hover:text-primary transition-colors">Sign In</Button>
             </Link>
             <Link to="/register">
-              <Button variant="hero">Get Started</Button>
+              <Button variant="hero" className="shadow-glow hover:shadow-accent hover:scale-105 transition-all duration-300">Get Started</Button>
             </Link>
           </div>
         </div>
       </nav>
 
       {/* Hero Section */}
-      <section className="py-20 px-4">
+      <section className="pt-32 pb-20 px-4 bg-gradient-to-br from-background via-primary/5 to-accent/5 min-h-screen flex items-center">
         <div className="container mx-auto max-w-6xl text-center">
-          <div className="space-y-8">
-            <h1 className="text-6xl lg:text-7xl font-bold leading-tight">
-              MASTER THE <span className="text-primary">APTITUDE</span>
-            </h1>
+          <div className="space-y-12 animate-fade-in">
+            <div className="space-y-6">
+              <div className="inline-flex items-center gap-2 bg-primary/10 text-primary px-4 py-2 rounded-full text-sm font-semibold mb-4 animate-pulse">
+                <Star className="w-4 h-4" />
+                Trusted by 50,000+ Students
+              </div>
+              <h1 className="text-5xl sm:text-6xl lg:text-8xl font-extrabold leading-tight">
+                MASTER THE{" "}
+                <span className="bg-gradient-primary bg-clip-text text-transparent animate-pulse">
+                  APTITUDE
+                </span>
+              </h1>
+              <p className="text-xl sm:text-2xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+                Join the fastest growing aptitude practice platform designed by IIT graduates. 
+                <span className="text-primary font-semibold"> Practice smarter, not harder.</span>
+              </p>
+            </div>
             
-            <div className="max-w-4xl mx-auto relative">
-              <img
-                src={heroImage}
-                alt="Students mastering aptitude with Crackit"
-                className="rounded-3xl shadow-2xl w-full"
-              />
-              <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-primary text-white px-6 py-2 rounded-full font-semibold">
-                DESIGNED BY IIT GRADUATES & ALUMNI
+            <div className="max-w-5xl mx-auto relative group">
+              <div className="absolute -inset-1 bg-gradient-primary rounded-3xl blur opacity-30 group-hover:opacity-60 transition duration-1000 group-hover:duration-200"></div>
+              <div className="relative">
+                <img
+                  src={heroImage}
+                  alt="Students mastering aptitude with Crackit"
+                  className="rounded-3xl shadow-2xl w-full transform hover:scale-[1.02] transition-transform duration-700"
+                />
+                <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 bg-white/95 backdrop-blur-xl text-primary px-8 py-3 rounded-full font-bold text-sm shadow-xl border border-primary/20">
+                  <div className="flex items-center gap-2">
+                    <GraduationCap className="w-4 h-4" />
+                    DESIGNED BY IIT GRADUATES & ALUMNI
+                  </div>
+                </div>
               </div>
             </div>
 
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
               <Link to="/register">
-                <Button variant="hero" size="xl" className="w-full sm:w-auto text-lg px-12">
+                <Button variant="hero" size="xl" className="w-full sm:w-auto text-lg px-12 shadow-glow hover:shadow-accent hover:scale-110 transform transition-all duration-300 animate-pulse">
+                  <Zap className="w-5 h-5 mr-2" />
                   Start Free Practice
                 </Button>
               </Link>
               <Link to="/login">
-                <Button variant="outline" size="xl" className="w-full sm:w-auto text-lg px-12">
+                <Button variant="outline" size="xl" className="w-full sm:w-auto text-lg px-12 border-2 hover:bg-primary/10 hover:border-primary hover:scale-105 transform transition-all duration-300">
                   Sign In
                 </Button>
               </Link>
+            </div>
+
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-8 pt-12">
+              {[
+                { number: "50K+", label: "Active Students" },
+                { number: "10K+", label: "Practice Questions" },
+                { number: "95%", label: "Success Rate" },
+                { number: "24/7", label: "AI Support" },
+              ].map((stat, index) => (
+                <div key={index} className="text-center group hover:scale-110 transition-transform duration-300">
+                  <div className="text-3xl font-bold text-primary group-hover:text-accent transition-colors">{stat.number}</div>
+                  <div className="text-sm text-muted-foreground font-medium">{stat.label}</div>
+                </div>
+              ))}
             </div>
           </div>
         </div>
       </section>
 
       {/* Completely Free Section */}
-      <section className="py-20 px-4 bg-black text-white">
-        <div className="container mx-auto max-w-4xl text-center">
-          <h2 className="text-5xl font-bold mb-8">COMPLETELY FREE</h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
-            <div className="space-y-2">
-              <div className="text-2xl font-bold text-accent">10,000+</div>
-              <div className="text-sm opacity-80">Practice Questions</div>
+      <section className="py-24 px-4 bg-gradient-to-r from-black via-gray-900 to-black text-white relative overflow-hidden">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(120,119,198,0.1),transparent_50%)]"></div>
+        <div className="container mx-auto max-w-6xl text-center relative z-10">
+          <div className="space-y-12">
+            <div className="space-y-4">
+              <div className="inline-flex items-center gap-2 bg-accent/20 text-accent px-6 py-2 rounded-full text-sm font-semibold animate-pulse">
+                <Award className="w-4 h-4" />
+                Limited Time: Everything Free
+              </div>
+              <h2 className="text-6xl lg:text-7xl font-extrabold mb-6 bg-gradient-to-r from-white via-accent to-white bg-clip-text text-transparent">
+                COMPLETELY FREE
+              </h2>
+              <p className="text-xl opacity-90 max-w-2xl mx-auto">
+                No hidden fees, no premium tiers. Get full access to everything, forever.
+              </p>
             </div>
-            <div className="space-y-2">
-              <div className="text-2xl font-bold text-accent">50+</div>
-              <div className="text-sm opacity-80">Topic Categories</div>
+            
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
+              {[
+                { number: "10,000+", label: "Practice Questions", icon: BookOpen },
+                { number: "50+", label: "Topic Categories", icon: Target },
+                { number: "24/7", label: "AI Support", icon: Clock },
+                { number: "100%", label: "Free Forever", icon: Award },
+              ].map((item, index) => (
+                <div key={index} className="group hover:scale-110 transition-all duration-300">
+                  <Card className="bg-white/5 border-white/10 text-white hover:bg-white/10 transition-all duration-300 backdrop-blur-xl">
+                    <CardContent className="p-8 text-center space-y-4">
+                      <item.icon className="w-12 h-12 mx-auto text-accent group-hover:scale-110 transition-transform" />
+                      <div className="text-4xl font-bold bg-gradient-to-r from-accent to-white bg-clip-text text-transparent">
+                        {item.number}
+                      </div>
+                      <div className="text-sm opacity-80 font-medium">{item.label}</div>
+                    </CardContent>
+                  </Card>
+                </div>
+              ))}
             </div>
-            <div className="space-y-2">
-              <div className="text-2xl font-bold text-accent">24/7</div>
-              <div className="text-sm opacity-80">Access</div>
-            </div>
-            <div className="space-y-2">
-              <div className="text-2xl font-bold text-accent">100%</div>
-              <div className="text-sm opacity-80">Free Forever</div>
-            </div>
+            
+            <Link to="/register">
+              <Button variant="accent" size="xl" className="text-lg px-16 shadow-glow hover:shadow-accent hover:scale-110 transform transition-all duration-300 animate-pulse">
+                <Lightbulb className="w-5 h-5 mr-2" />
+                GET STARTED FOR FREE
+              </Button>
+            </Link>
           </div>
-          <Link to="/register">
-            <Button variant="accent" size="xl" className="text-lg px-12">
-              GET STARTED FOR FREE
-            </Button>
-          </Link>
         </div>
       </section>
 
@@ -193,15 +246,15 @@ const Index = () => {
           
           <div className="grid md:grid-cols-3 gap-8 mt-16">
             {features.map((feature, index) => (
-              <Card key={index} className="text-center hover:shadow-lg transition-shadow bg-white">
+              <Card key={index} className="group text-center hover:shadow-2xl hover:shadow-primary/20 transition-all duration-500 bg-gradient-to-br from-white to-primary/5 border-2 hover:border-primary/30 hover:scale-105 transform">
                 <CardHeader>
-                  <div className="mx-auto w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center text-primary mb-4">
+                  <div className="mx-auto w-20 h-20 bg-gradient-primary rounded-2xl flex items-center justify-center text-white mb-6 shadow-glow group-hover:shadow-accent group-hover:scale-110 transition-all duration-300">
                     {feature.icon}
                   </div>
-                  <CardTitle className="text-lg">{feature.title}</CardTitle>
+                  <CardTitle className="text-xl font-bold group-hover:text-primary transition-colors">{feature.title}</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <CardDescription className="text-sm leading-relaxed">
+                  <CardDescription className="text-base leading-relaxed text-muted-foreground group-hover:text-foreground transition-colors">
                     {feature.description}
                   </CardDescription>
                 </CardContent>
@@ -221,18 +274,26 @@ const Index = () => {
           
           <div className="grid md:grid-cols-3 gap-8">
             {mentors.map((mentor, index) => (
-              <Card key={index} className="text-center hover:shadow-xl transition-shadow bg-gradient-to-br from-background to-muted/30">
-                <CardHeader>
-                  <div className="mx-auto w-24 h-24 bg-primary rounded-full flex items-center justify-center text-white text-2xl font-bold mb-4">
+              <Card key={index} className="group text-center hover:shadow-2xl hover:shadow-primary/20 transition-all duration-500 bg-gradient-to-br from-white via-primary/5 to-accent/5 border-2 hover:border-primary/30 hover:scale-105 transform backdrop-blur-sm">
+                <CardHeader className="relative">
+                  <div className="absolute inset-0 bg-gradient-primary opacity-0 group-hover:opacity-10 rounded-t-lg transition-opacity duration-300"></div>
+                  <div className="relative mx-auto w-28 h-28 bg-gradient-primary rounded-full flex items-center justify-center text-white text-2xl font-bold mb-6 shadow-glow group-hover:shadow-accent group-hover:scale-110 transition-all duration-300 border-4 border-white">
                     {mentor.image}
                   </div>
-                  <CardTitle className="text-xl">{mentor.name}</CardTitle>
-                  <CardDescription className="text-primary font-semibold">{mentor.role}</CardDescription>
+                  <CardTitle className="text-xl font-bold group-hover:text-primary transition-colors">{mentor.name}</CardTitle>
+                  <CardDescription className="text-primary font-bold text-lg bg-primary/10 px-3 py-1 rounded-full inline-block mt-2">
+                    {mentor.role}
+                  </CardDescription>
                 </CardHeader>
                 <CardContent>
-                  <div className="space-y-2 text-sm text-muted-foreground">
-                    <p>{mentor.experience}</p>
-                    <p className="font-medium">{mentor.specialization}</p>
+                  <div className="space-y-3 text-muted-foreground group-hover:text-foreground transition-colors">
+                    <div className="flex items-center gap-2 justify-center">
+                      <Award className="w-4 h-4 text-accent" />
+                      <p className="font-semibold">{mentor.experience}</p>
+                    </div>
+                    <p className="text-sm bg-accent/10 px-3 py-2 rounded-lg font-medium text-accent">
+                      {mentor.specialization}
+                    </p>
                   </div>
                 </CardContent>
               </Card>
@@ -274,50 +335,78 @@ const Index = () => {
               </div>
             </div>
             
-            <div className="relative">
-              <Card className="p-6 bg-gradient-to-br from-background to-muted/30 border-2 shadow-xl">
-                <div className="flex items-center justify-between mb-6">
-                  <div className="flex items-center gap-2">
-                    <div className="w-3 h-3 bg-red-500 rounded-full"></div>
-                    <div className="w-3 h-3 bg-yellow-500 rounded-full"></div>
-                    <div className="w-3 h-3 bg-green-500 rounded-full"></div>
+            <div className="relative group">
+              <div className="absolute -inset-4 bg-gradient-primary rounded-3xl blur opacity-20 group-hover:opacity-40 transition duration-1000"></div>
+              <Card className="relative p-8 bg-gradient-to-br from-white via-primary/5 to-accent/5 border-2 shadow-2xl backdrop-blur-xl hover:shadow-primary/20 transition-all duration-500 transform hover:scale-[1.02]">
+                <div className="flex items-center justify-between mb-8">
+                  <div className="flex items-center gap-3">
+                    <div className="w-4 h-4 bg-red-500 rounded-full animate-pulse"></div>
+                    <div className="w-4 h-4 bg-yellow-500 rounded-full animate-pulse" style={{animationDelay: '0.5s'}}></div>
+                    <div className="w-4 h-4 bg-green-500 rounded-full animate-pulse" style={{animationDelay: '1s'}}></div>
+                    <span className="text-sm font-medium text-muted-foreground ml-2">crackit.ai/test</span>
                   </div>
-                  <div className="flex items-center gap-2 text-primary font-semibold">
-                    <Clock className="h-4 w-4" />
-                    <span>25:30</span>
+                  <div className="flex items-center gap-3 bg-primary/10 px-4 py-2 rounded-full">
+                    <Clock className="h-5 w-5 text-primary animate-pulse" />
+                    <span className="font-bold text-primary text-lg">25:30</span>
                   </div>
                 </div>
                 
-                <div className="space-y-4">
-                  <div className="text-sm text-muted-foreground">Question 15 of 30</div>
-                  <h4 className="font-semibold text-lg">
-                    If a train travels 240 km in 3 hours, what is its average speed?
-                  </h4>
-                  
-                  <div className="space-y-3">
-                    <div className="p-3 bg-muted/50 rounded-lg hover:bg-primary/10 cursor-pointer transition-colors border">
-                      A) 60 km/h
-                    </div>
-                    <div className="p-3 bg-primary/10 rounded-lg border-2 border-primary">
-                      B) 80 km/h ✓
-                    </div>
-                    <div className="p-3 bg-muted/50 rounded-lg hover:bg-primary/10 cursor-pointer transition-colors border">
-                      C) 100 km/h
-                    </div>
-                    <div className="p-3 bg-muted/50 rounded-lg hover:bg-primary/10 cursor-pointer transition-colors border">
-                      D) 120 km/h
+                <div className="space-y-6">
+                  <div className="flex items-center justify-between">
+                    <span className="text-sm font-medium text-muted-foreground bg-muted/50 px-3 py-1 rounded-full">Question 15 of 30</span>
+                    <div className="flex items-center gap-2 text-sm text-accent font-semibold">
+                      <TrendingUp className="w-4 h-4" />
+                      85% Accuracy
                     </div>
                   </div>
                   
-                  <div className="flex justify-between pt-4">
-                    <Button variant="outline">Previous</Button>
-                    <Button variant="hero">Next Question</Button>
+                  <h4 className="font-bold text-xl leading-relaxed text-foreground">
+                    If a train travels 240 km in 3 hours, what is its average speed?
+                  </h4>
+                  
+                  <div className="space-y-4">
+                    <div className="p-4 bg-muted/30 rounded-xl hover:bg-primary/10 cursor-pointer transition-all duration-300 border-2 border-transparent hover:border-primary/30 hover:scale-[1.02] transform">
+                      <div className="flex items-center gap-3">
+                        <div className="w-8 h-8 bg-muted rounded-full flex items-center justify-center font-semibold">A</div>
+                        <span className="font-medium">60 km/h</span>
+                      </div>
+                    </div>
+                    <div className="p-4 bg-primary/15 rounded-xl border-2 border-primary shadow-glow transform scale-[1.02]">
+                      <div className="flex items-center gap-3">
+                        <div className="w-8 h-8 bg-primary text-white rounded-full flex items-center justify-center font-semibold">B</div>
+                        <span className="font-medium text-primary">80 km/h</span>
+                        <CheckCircle className="w-5 h-5 text-primary ml-auto" />
+                      </div>
+                    </div>
+                    <div className="p-4 bg-muted/30 rounded-xl hover:bg-primary/10 cursor-pointer transition-all duration-300 border-2 border-transparent hover:border-primary/30 hover:scale-[1.02] transform">
+                      <div className="flex items-center gap-3">
+                        <div className="w-8 h-8 bg-muted rounded-full flex items-center justify-center font-semibold">C</div>
+                        <span className="font-medium">100 km/h</span>
+                      </div>
+                    </div>
+                    <div className="p-4 bg-muted/30 rounded-xl hover:bg-primary/10 cursor-pointer transition-all duration-300 border-2 border-transparent hover:border-primary/30 hover:scale-[1.02] transform">
+                      <div className="flex items-center gap-3">
+                        <div className="w-8 h-8 bg-muted rounded-full flex items-center justify-center font-semibold">D</div>
+                        <span className="font-medium">120 km/h</span>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div className="flex justify-between pt-6">
+                    <Button variant="outline" className="px-8 hover:scale-105 transform transition-all duration-300">Previous</Button>
+                    <Button variant="hero" className="px-8 shadow-glow hover:shadow-accent hover:scale-105 transform transition-all duration-300">
+                      Next Question
+                      <ChevronDown className="w-4 h-4 ml-2 rotate-[-90deg]" />
+                    </Button>
                   </div>
                 </div>
               </Card>
               
-              <div className="absolute -top-4 -right-4 bg-success text-white px-3 py-1 rounded-full text-sm font-semibold">
-                Live Preview
+              <div className="absolute -top-6 -right-6 bg-gradient-to-r from-success to-accent text-white px-6 py-2 rounded-full text-sm font-bold shadow-glow animate-pulse">
+                <div className="flex items-center gap-2">
+                  <div className="w-2 h-2 bg-white rounded-full animate-ping"></div>
+                  Live Preview
+                </div>
               </div>
             </div>
           </div>
